@@ -7,10 +7,13 @@ project(${NAME} VERSION 1.0)
 
 # Add exectuable
 add_executable(${NAME}
-               "${CMAKE_SOURCE_DIR}/src/Pong.cpp")
+  "${CMAKE_SOURCE_DIR}/src/main.cpp"
+  "${CMAKE_SOURCE_DIR}/src/paddle.cpp"
+  "${CMAKE_SOURCE_DIR}/src/ball.cpp")
 
 target_include_directories(${NAME}
                PUBLIC
+               "${CMAKE_SOURCE_DIR}/inc"
                "/usr/include/SFML")
 
 if (UNIX)

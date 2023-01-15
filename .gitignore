@@ -1,0 +1,2 @@
+# Ignore any subdirectory named build, but allow files named build
+build/

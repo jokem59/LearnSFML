@@ -1,7 +1,9 @@
 #include "paddle.h"
 #include "ball.h"
+#include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <cstdint>
 #include <SFML/Graphics.hpp>
 
 constexpr int WINDOW_HEIGHT = 1024;
@@ -9,7 +11,12 @@ constexpr int WINDOW_WIDTH = 768;
 
 int main()
 {
-    RenderWindow window(VideoMode(WINDOW_HEIGHT, WINDOW_WIDTH), "Pong");
+    RenderWindow window = RenderWindow(VideoMode(WINDOW_HEIGHT, WINDOW_WIDTH), "Pong");
+    window.setFramerateLimit(1620);
+    sf::Vector2u windowSize = window.getSize();
+    int width = windowSize.x;
+    int height = windowSize.y;
+    std::cout << "Win Height: " << height << " Win Width: " << width << '\n';
 
     auto score = 0;
     auto lives = 3;

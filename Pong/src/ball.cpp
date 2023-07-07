@@ -21,6 +21,12 @@ RectangleShape Ball::getShape()
     return _ballShape;
 }
 
+void Ball::setPosition(float newX, float newY)
+{
+    _position.x = newX;
+    _position.y = newY;
+}
+
 float Ball::getXVelocity()
 {
     return _xVelocity;
@@ -55,4 +61,8 @@ void Ball::update()
     // Move the ball and the bat
     _ballShape.setPosition(_position);
     return;
+}
+
+float Ball::getY() const {
+    return _position.y;
 }

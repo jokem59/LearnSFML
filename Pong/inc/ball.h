@@ -21,6 +21,8 @@ public:
 
     RectangleShape getShape();
 
+    void setPosition(float newX, float newY);
+
     float getXVelocity();
 
     void reboundSides();
@@ -30,4 +32,6 @@ public:
     void hitBottom();
 
     void update();
+
+    float getY() const;
 };

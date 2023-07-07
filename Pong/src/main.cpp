@@ -6,17 +6,20 @@
 #include <cstdint>
 #include <SFML/Graphics.hpp>
 
+// TODO: HEIGHT and WIDTH are mixed up here
 constexpr int WINDOW_HEIGHT = 1024;
 constexpr int WINDOW_WIDTH = 768;
 
 int main()
 {
     RenderWindow window = RenderWindow(VideoMode(WINDOW_HEIGHT, WINDOW_WIDTH), "Pong");
-    window.setFramerateLimit(1620);
+    window.setFramerateLimit(1620); // TODO: Is there a better way to do this?
     sf::Vector2u windowSize = window.getSize();
     int width = windowSize.x;
     int height = windowSize.y;
     std::cout << "Win Height: " << height << " Win Width: " << width << '\n';
+
+    sf::FloatRect windowBounds = sf::FloatRect(sf::Vector2f(0.f, 0.f), window.getDefaultView().getSize());
 
     auto score = 0;
     auto lives = 3;
@@ -73,6 +76,18 @@ int main()
 
         ball.update();
         paddle.update();
+
+        // Check if ball is still within window boundary
+        if (ball.getY() >= WINDOW_WIDTH) {
+            score = 0;
+            lives--;
+
+            if (lives == 0) {
+                break;
+            }
+            // Reset ball position
+            ball.setPosition(WINDOW_WIDTH / 2, 1);
+        }
 
         // Update the HUD
         std::stringstream ss;
